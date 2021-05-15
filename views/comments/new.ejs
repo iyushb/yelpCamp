@@ -1,0 +1,16 @@
+<%-include ("../partials/header.ejs")%>
+
+<div class="addcamp_form" style="padding:20px;">
+    <h1>Add Comment to <%=campground.name%></h1>
+    <form action="/campgrounds/<%=campground._id%>/comments" method="POST">
+
+        <div class="camp-description-input">
+            <textarea name="comment[text]" id="desc" cols="40" rows="5" placeholder="Add comment"></textarea>
+        </div>
+        <div class="submit-btn">
+            <button class="primary-btn" type="submit">Add</button>
+        </div>
+    </form>
+</div>
+
+<%-include ("../partials/footer.ejs")%>

@@ -1,0 +1,23 @@
+<%-include ("../partials/header.ejs")%>
+
+<div class="addcamp_form">
+    <h1>Update <%=campground.name%></h1>
+    <form method="POST" action="/campgrounds/<%=campground._id%>?_method=PUT">
+
+        <div class="field-name">
+            <input type="text" name='camp[name]' value="<%=campground.name%>" required maxlength="40">
+        </div>
+        <div class="field-url">
+
+            <input type="text" name='camp[image]' value="<%=campground.image%>" required>
+        </div>
+        <div class="camp-description-input">
+            <textarea name="camp[description]" id="desc" cols="40" rows="5"><%=campground.description%></textarea>
+        </div>
+        <div class="submit-btn">
+            <button class="primary-btn" type="submit">Add</button>
+        </div>
+    </form>
+</div>
+
+<%-include ("../partials/footer.ejs")%>

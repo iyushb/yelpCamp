@@ -1,0 +1,4 @@
+<form action="/campgrounds/<%=campground_id%>/comments/<%=comment._id%>?_method=PUT" method='POST'>
+    <textarea name="comment[text]" id="" cols="30" rows="10"><%=comment.text%></textarea>
+    <button class="primary-btn">submit</button>
+</form>

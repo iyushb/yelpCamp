@@ -1,0 +1,58 @@
+<%-include ("../partials/header.ejs")%>
+
+<div class="show-container">
+    <div class="show-container-left">
+        <ul>
+            <li class="active"><a>Info 1</a></li>
+            <li><a>Info 2</a></li>
+            <li><a>Info 3</a></li>
+        </ul>
+    </div>
+    <div class="show-container-right">
+        <img src="<%=campground.image%>" alt="image">
+        <div class="show-rightBottom-container">
+            <h1><%=campground.name%></h1>
+            <div class="camp-description">
+                <p>
+                    <%=campground.description%>
+                </p>
+            </div>
+            <em>
+                <p class='author-name'>Submitted by: <%=campground.author.username%></p>
+            </em>
+            <%if(currentUser && campground.author.id.equals(currentUser._id)){%>
+            <a href="/campgrounds/<%=campground._id%>/edit" class='primary-btn update'>Update</a>
+            <form action="/campgrounds/<%=campground._id%>?_method=DELETE" method='POST'>
+                <button class='primary-btn delete'>Delete</button>
+            </form>
+            <%}%>
+
+        <div class="comment-section">
+            <a class="primary-btn" href="/campgrounds/<%=campground._id%>/comments/new">Add review</a>
+
+            <% campground.comments.forEach(function(comment){%>
+            <div class="inner-comment-section">
+                <div class="comment-section-description">
+                    <span><b><%=comment.author.username%> </b></span>
+                    <p> <%=comment.text%></p>
+                </div>
+                <% if(currentUser && comment.author.id.equals(currentUser._id)){%>
+                <div class="comment-section-btn">
+                    <a href="/campgrounds/<%=campground._id%>/comments/<%=comment._id%>/edit"><img src="/icons/edit.svg"
+                            alt="edit" width="15px" height="15px"></a>
+                    <form action="/campgrounds/<%=campground._id%>/comments/<%=comment._id%>?_method=DELETE"
+                        method='POST'>
+                        <button><img src="/icons/trash.svg" alt="edit"></button>
+                    </form>
+                </div>
+                <%}%>
+            </div>
+            <%})%>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<%-include ("../partials/footer.ejs")%>

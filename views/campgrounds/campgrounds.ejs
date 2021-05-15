@@ -1,0 +1,24 @@
+<%-include ("../partials/header.ejs")%>
+<% if(currentUser){%>
+<p class="username">
+    <b>Hello, <%= currentUser.username%></b>
+</p>
+<%}%>
+<div class="heading-container" data-aos='zoom-in-right'>
+    <h1>Welcome To Yelp Camp</h1>
+    <p>View our hand-piked campgrounds from all over the world.</p>
+    <a href="/campgrounds/new" class='primary-btn'>Add campground</a>
+</div>
+
+<div class="camp-grids">
+    <%campgrounds.forEach(function(site){%>
+<div class='inner-camp-container'>
+    <img src="<%= site.image%>" alt="">
+    <h3><%= site.name%></h3>
+    <a href="/campgrounds/<%= site._id %>" class='primary-btn'>More</a>
+</div>
+<%});%>
+</div>
+
+
+<%-include ("../partials/footer.ejs")%>

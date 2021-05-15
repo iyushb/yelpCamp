@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yelp Camp</title>
+
+    <link rel="stylesheet" href="/css/aos.css" />
+    <link rel="stylesheet" href="/css/mystyles.css">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+
+
+</head>
+
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="/campgrounds">Yelp Camp</a>
+            </div>
+            <div class="nav-links">
+                <%if(!currentUser){%>
+                <li><a href="/login">LOGIN</a></li>
+                <li><a href="/signup">SIGNUP</a></li>
+                <%} else {%>
+
+                <li><a href="/logout">LOGOUT</a></li>
+                <%}%>
+            </div>
+        </div>
+    </nav>   
+            <%if(success && success.length>0){%>
+                <div class="success"><%= success%>
+                </div>
+                <%}%>
+            <%if(error && error.length>0){%>
+                <div class="error"><%= error%></div>
+                <%}%>
